@@ -14,13 +14,13 @@ def dict_factory(cursor, row):
 
 @app.route('/', methods=['GET'])
 def home():
-    return '''<h1>Distant Reading Archive</h1>
-<p>A prototype API for distant reading of science fiction novels.</p>'''
+    return '''<h1>KOSMOS</h1>
+<p>A prototype API for test API CRUD functionality.</p>'''
 
 
 @app.route('/api/v1/resources/kosmos/all', methods=['GET'])
 def api_all():
-    conn = sqlite3.connect('books.db')
+    conn = sqlite3.connect('kosmos.db')
     conn.row_factory = dict_factory
     cur = conn.cursor()
     all_books = cur.execute('SELECT * FROM kosmos;').fetchall()
@@ -59,7 +59,7 @@ def api_filter():
 
     query = query[:-4] + ';'
 
-    conn = sqlite3.connect('books.db')
+    conn = sqlite3.connect('kosmos.db')
     conn.row_factory = dict_factory
     cur = conn.cursor()
 
